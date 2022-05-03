@@ -57,17 +57,19 @@
         <div class = "input-container">
             <input type = "text" maxlength = "5" minlength = "5">
             <button>Enter!</button>
+            <button id = "reset">RESET</button>
         </div>
         <p id = "game-over"></p>
     </div>
 </div>
 </body>
 <script>
-    const answer = "CRANE"; //todo make this random word
+    const answer = getAnswer(); //todo make this random word
     const board = document.getElementById('board');
     const textBox = document.querySelector('input');
     const submitButton = document.querySelector('button');
     const gameOverMessage = document.getElementById('game-over');
+    const resetButton = document.getElementById('reset');
 
     let currentGuessNumber = 0
 
@@ -169,5 +171,14 @@
         }
         return matchArray
     }
+    function getAnswer(){
+        let answerList = ['CRANE', 'PLANE', 'WATCH', 'SHAKE', 'SNAKE', 'AMPLE', 'MEATS', 'WORDS',];
+        let randomNumber = Math.floor(Math.random()*answerList.length)
+        let answer = answerList[randomNumber]
+        return answer
+    }
+    resetButton.addEventListener('click', function(e){
+        document.location.reload();
+    })
 </script>
 </html>
