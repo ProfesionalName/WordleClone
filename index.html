@@ -102,6 +102,7 @@
             textBox.remove();
             return
         }
+        textBox.value = "";
     })
 
     function writeGuess(guess){
@@ -157,7 +158,16 @@
             let index = answerAsArray.indexOf(letter);
 
             //if letter nmot in remaining letters, move on to next letter
+            if(index === -1){
+                continue
+            }
+
+            //remove letter to prevent matching in other positions
+            answerAsArray[index] = null;
+            //mark it yellow as it is in word but not in the correct spot
+            matchArray[i] = 1
         }
+        return matchArray
     }
 </script>
 </html>
